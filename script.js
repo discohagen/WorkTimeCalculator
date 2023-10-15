@@ -1,20 +1,25 @@
-const result =
-  document.querySelector('.out');
-
 const form =
   document.querySelector('form');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
+  const result =
+    document.querySelector('.out');
+
   const inputs = Array.from(
     document.querySelectorAll('.in')
   );
+
   const inputValues =
     parseInputsToNumbers(inputs);
 
-  result.value = calculateEndOfWork(
-    inputValues
-  );
+  const resultValue =
+    calculateEndOfWork(inputValues);
+
+  const parsedResult =
+    parseNumberToTimeStr(resultValue);
+
+  result.value = parsedResult;
 });
 
 function calculateEndOfWork([
@@ -24,36 +29,40 @@ function calculateEndOfWork([
   workTime,
   saldoToUse,
 ]) {
-  if (saldoToUse) {
-    return (
-      start +
-      (breakEnd - breakStart) +
-      workTime -
-      saldoToUse
-    );
-  }
   return (
     start +
     (breakEnd - breakStart) +
-    workTime
+    workTime -
+    saldoToUse
   );
 }
 
 function parseTimeToHours(timeString) {
   const [hours, minutes] = timeString
     .split(':')
-    .map((num) => parseInt(num, 10));
+    .map((num) => parseInt(num));
+
   const totalHours =
     hours + minutes / 60;
-  return totalHours.toFixed(2);
+
+  return (
+    Math.round(totalHours * 100) / 100
+  );
 }
 
 function parseInputsToNumbers(inputs) {
-  const parsedValues = [];
-  inputs.forEach((input) => {
-    parsedValues.push(
-      parseInputsToNumbers(input.value)
-    );
-  });
-  return parsedValues;
+  return inputs.map((input) =>
+    parseTimeToHours(input.value)
+  );
+}
+
+function parseNumberToTimeStr(num) {
+  const hours = parseInt(num);
+  const minutes = Math.round(
+    (num - hours) * 60
+  );
+  if (minutes < 10) {
+    return hours + ':0' + minutes;
+  }
+  return hours + ':' + minutes;
 }
