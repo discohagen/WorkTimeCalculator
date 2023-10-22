@@ -1,24 +1,26 @@
-document
-  .querySelector('form')
-  .addEventListener('submit', (e) => {
-    e.preventDefault();
+const form =
+  document.querySelector('form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-    const resultElement =
-      document.querySelector('.out');
+  const result =
+    document.querySelector('.out');
 
-    resultElement.value =
-      parseNumberToTimeStr(
-        calculateEndOfWork(
-          parseInputElementsToNumberValues(
-            Array.from(
-              document.querySelectorAll(
-                '.in'
-              )
-            )
-          )
-        )
-      );
-  });
+  const inputs = Array.from(
+    document.querySelectorAll('.in')
+  );
+
+  const inputValues =
+    parseInputsToNumbers(inputs);
+
+  const resultValue =
+    calculateEndOfWork(inputValues);
+
+  const parsedResult =
+    parseNumberToTimeStr(resultValue);
+
+  result.value = parsedResult;
+});
 
 function calculateEndOfWork([
   start,
@@ -48,9 +50,7 @@ function parseTimeToHours(timeString) {
   );
 }
 
-function parseInputElementsToNumberValues(
-  inputs
-) {
+function parseInputsToNumbers(inputs) {
   return inputs.map((input) =>
     parseTimeToHours(input.value)
   );
