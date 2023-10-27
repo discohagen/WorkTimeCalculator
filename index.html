@@ -11,40 +11,76 @@
   </head>
   <body>
     <form>
-      <input
-        type="time"
-        value="08:00"
-        required
-        class="in" />
-      <input
-        type="time"
-        value="11:30"
-        required
-        class="in" />
-      <input
-        type="time"
-        value="12:00"
-        required
-        class="in" />
-      <input
-        type="time"
-        value="07:36"
-        required
-        class="in" />
-      <input
-        type="time"
-        value="00:00"
-        required
-        class="in" />
+      <div class="form">
+        <div class="input">
+          <label>Start</label>
+          <input
+            type="time"
+            value="08:00"
+            required
+            class="in" />
+        </div>
+        <div class="input">
+          <label>Break start</label>
+          <input
+            type="time"
+            value="11:30"
+            required
+            class="in" />
+        </div>
+        <div class="input">
+          <label>Break end</label>
+          <input
+            type="time"
+            value="12:00"
+            required
+            class="in" />
+        </div>
+        <div class="input">
+          <label
+            >Target work time</label
+          >
+          <input
+            type="time"
+            value="07:36"
+            required
+            class="in" />
+        </div>
 
-      <button type="submit">
-        submit
-      </button>
+        <div class="input">
+          <div class="sign">
+            <button>+</button>
+            <button>-</button>
+          </div>
+          <div>
+            <label>Saldo to use</label>
+            <input
+              type="time"
+              value="00:00"
+              required
+              class="in" />
+          </div>
+        </div>
+      </div>
+      <div class="form">
+        <button
+          type="submit"
+          class="submit">
+          submit &#x2714
+        </button>
+      </div>
     </form>
-    <input
-      type="time"
-      class="out"
-      readonly />
+    <div class="form">
+      <div class="input">
+        <label class="end"
+          >"Feierabend!"</label
+        >
+        <input
+          type="time"
+          class="out"
+          readonly />
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

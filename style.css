@@ -1,0 +1,63 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans&display=swap);
+
+html {
+  line-height: 1.15;
+}
+
+body {
+  background: #fff;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4rem;
+  margin-left: 2rem;
+  width: 8rem;
+}
+
+.input:nth-child(4) {
+  margin-right: 4rem;
+}
+
+.input:nth-child(5) {
+  flex-direction: row;
+  margin-left: 0rem;
+}
+
+input {
+  font-size: 1.25rem;
+  font-family: inherit;
+  background-color: #eaeff1;
+  border: none;
+  border-bottom: 4px solid #c9d6da;
+  padding: 0.5rem;
+  width: 8rem;
+}
+
+.sign {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  margin-right: 0.5rem;
+  width: 1.5rem;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.submit {
+  margin: 2rem;
+  width: 9rem;
+  height: 3rem;
+  text-transform: uppercase;
+  font-family: 'Franklin Gothic Medium',
+    'Arial Narrow', Arial, sans-serif;
+  font-size: large;
+}
