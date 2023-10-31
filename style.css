@@ -49,7 +49,13 @@ input {
   margin-right: 0.5rem;
   width: 1.5rem;
   gap: 2px;
-  margin-bottom: 4px;
+}
+
+.sign-button {
+  background-color: #eaeff1;
+  border: 2px solid #c9d6da;
+  font-size: medium;
+  text-align: center;
 }
 
 .submit {
@@ -60,4 +66,29 @@ input {
   font-family: 'Franklin Gothic Medium',
     'Arial Narrow', Arial, sans-serif;
   font-size: large;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.2s;
+  background-color: #eaeff1;
+  border-bottom: 4px solid #c9d6da;
+}
+
+.submit:hover {
+  background-color: #8bc34a;
+  border-bottom: 4px solid #7e9e59;
+  color: white;
+}
+
+.submit:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
+  border: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.active {
+  background-color: #c9d6da;
 }
