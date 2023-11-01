@@ -1,25 +1,26 @@
+const resultElement =
+  document.querySelector('.out');
+
+const inputElements = Array.from(
+  document.querySelectorAll('.in')
+);
+
 const form =
   document.querySelector('form');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const result =
-    document.querySelector('.out');
+  var inputValues =
+    parseInputsToNumbers(inputElements);
 
-  const inputs = Array.from(
-    document.querySelectorAll('.in')
+  var resultValue = calculateEndOfWork(
+    inputValues
   );
 
-  const inputValues =
-    parseInputsToNumbers(inputs);
-
-  const resultValue =
-    calculateEndOfWork(inputValues);
-
-  const parsedResult =
+  var parsedResult =
     parseNumberToTimeStr(resultValue);
 
-  result.value = parsedResult;
+  resultElement.value = parsedResult;
 });
 
 function calculateEndOfWork([
@@ -66,3 +67,42 @@ function parseNumberToTimeStr(num) {
   }
   return hours + ':' + minutes;
 }
+
+//sign buttons
+
+const plus = document.querySelector(
+  '.plus-button'
+);
+const minus = document.querySelector(
+  '.minus-button'
+);
+
+plus.onclick = function () {
+  if (
+    plus.classList.contains('inactive')
+  ) {
+    plus.classList.replace(
+      'inactive',
+      'active'
+    );
+    minus.classList.replace(
+      'active',
+      'inactive'
+    );
+  }
+};
+
+minus.onclick = function () {
+  if (
+    minus.classList.contains('inactive')
+  ) {
+    minus.classList.replace(
+      'inactive',
+      'active'
+    );
+    plus.classList.replace(
+      'active',
+      'inactive'
+    );
+  }
+};
