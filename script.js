@@ -5,6 +5,13 @@ const inputElements = Array.from(
   document.querySelectorAll('.in')
 );
 
+const plus = document.querySelector(
+  '.plus-button'
+);
+const minus = document.querySelector(
+  '.minus-button'
+);
+
 const form =
   document.querySelector('form');
 form.addEventListener('submit', (e) => {
@@ -30,6 +37,11 @@ function calculateEndOfWork([
   workTime,
   saldoToUse,
 ]) {
+  if (
+    minus.classList.contains('active')
+  ) {
+    saldoToUse = -1 * saldoToUse;
+  }
   return (
     start +
     (breakEnd - breakStart) +
@@ -69,13 +81,6 @@ function parseNumberToTimeStr(num) {
 }
 
 //sign buttons
-
-const plus = document.querySelector(
-  '.plus-button'
-);
-const minus = document.querySelector(
-  '.minus-button'
-);
 
 plus.onclick = function () {
   if (
